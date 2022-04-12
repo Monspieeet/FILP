@@ -1,9 +1,9 @@
 open System
 let rec Up n =
     if n=0 then 1
-    else (n%10)*PrUp(n/10)
+    else (n%10)*Up(n/10)
 
-let PrTail n =
+let ProzTail n =
     let rec PT n pr =
         if n=0 then pr
         else 
@@ -12,13 +12,13 @@ let PrTail n =
           PT newn newPr
     PT n 1
 
-let rec MinUp n=
+let rec MinimUp n=
     if n<10 then n
     else 
-        if MinUp(n/10)<n%10 then MinUp(n/10)
+        if MinimUp(n/10)<n%10 then MinimUp(n/10)
         else n%10
 
-let MinTail n=
+let MinimTail n=
     let rec MT n min =
         if n=0 then min
         else 
@@ -26,13 +26,13 @@ let MinTail n=
             else MT (n/10) min
     MT n 10
 
-let rec MaxUp n=
+let rec MaximUp n=
     if n<10 then n
     else 
-        if MaxUp(n/10)>n%10 then MaxUp(n/10)
+        if MaximUp(n/10)>n%10 then MaximUp(n/10)
         else n%10
 
-let MaxTail n=
+let MaximTail n=
     let rec MaxT n max=
         if n=0 then max
         else if n%10>max then MaxT (n/10)(n%10)
@@ -43,9 +43,9 @@ let MaxTail n=
 let main argv =
    let n = Convert.ToInt32(Console.ReadLine())
    Console.WriteLine( Up n)
-   Console.WriteLine( PrTail n)
-   Console.WriteLine( MinUp n)
-   Console.WriteLine( MinTail n)
-   Console.WriteLine( MaxUp n)
-   Console.WriteLine( MaxTail n)
+   Console.WriteLine( ProzTail n)
+   Console.WriteLine( MinimUp n)
+   Console.WriteLine( MinimTail n)
+   Console.WriteLine( MaximUp n)
+   Console.WriteLine( MaximTail n)
    0
