@@ -55,9 +55,28 @@ brother(X,Y):-parent(Z,X),parent(Z,Y),man(Z),man(X).
 brother(X):-parent(Z,X),parent(Z,Y),man(Z),man(Y),write(Y),nl,fail.
 grand_pa(X,Y):-parent(X,Z),parent(Z,Y),man(X).
 grand_pa(X):-parent(Y,Z),parent(Z,X),man(Y),write(Y),nl,fail.
+
 %11
 son(X,Y):-parent(Y,X),man(X).
 son(X):-parent(X,Y),man(Y),write(Y),nl,fail.
 %12
 sister(X,Y):-woman(Y),parent(Z,X),parent(Z,Y),!.
 sisters(X):-sister(X,Y),write(Y),nl,fail.
+
+%13
+grand_ma(X,Y):-parent(X,Z),parent(Z,Y),woman(X),!.
+grand_mas(X):-grand_ma(Y,X),write(Y),nl,fail.
+
+%14
+grand_ma_and_da(X,Y):-(
+    parent(X,Z),parent(Z,Y),man(X),woman(Y);
+    parent(Y,Z),parent(Z,X),man(Y),woman(X)).
+    
+%15
+max(X,X):-X<10,!.
+max(X,M):-
+    X1 is X div 10,
+    X2 is X mod 10,
+
+max(X1,M1),
+(X2<M1, M is M1; M is X2).
