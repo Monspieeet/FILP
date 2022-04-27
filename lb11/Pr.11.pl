@@ -55,5 +55,9 @@ brother(X,Y):-parent(Z,X),parent(Z,Y),man(Z),man(X).
 brother(X):-parent(Z,X),parent(Z,Y),man(Z),man(Y),write(Y),nl,fail.
 grand_pa(X,Y):-parent(X,Z),parent(Z,Y),man(X).
 grand_pa(X):-parent(Y,Z),parent(Z,X),man(Y),write(Y),nl,fail.
+%11
 son(X,Y):-parent(Y,X),man(X).
 son(X):-parent(X,Y),man(Y),write(Y),nl,fail.
+%12
+sister(X,Y):-woman(Y),parent(Z,X),parent(Z,Y),!.
+sisters(X):-sister(X,Y),write(Y),nl,fail.
