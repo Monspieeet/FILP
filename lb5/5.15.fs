@@ -21,9 +21,6 @@ let rec ref n fec init known =
 let fz n fec nit= 
    ref n fec init (n-1)
 
-// let Eiler n = 
-//    fz n (fun x y -> x+1) 0
-
 [<EntryPoint>]
 let main argv =
     let n = 17
