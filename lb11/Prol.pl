@@ -80,3 +80,50 @@ max(X,M):-
 
 max(X1,M1),
 (X2<M1, M is M1; M is X2).
+
+%16
+maxdown(X,Max):-maxdown(X,0,Max).
+maxdown(0,Max,Max):-!.
+maxdown(X,C,Max):-
+    X1 is X div 10,
+    D1 is X mod 10,
+    D1>C, !,
+    maxdown(X1,D1,Max);
+    X2 is X div 10,
+    maxdown(X2,C,Max).
+    
+%17
+sm(0,0):-!.
+sm(X,Y):-X1 is X mod 10, X2 is X div 10,sm(X2,Y1),Y is Y1+X1,
+    0 is X1 mod 3,!.
+sm(X,Y):-X2 is X div 10,sm(X2,Y).
+
+%18
+sum(X,R):-sum(X,0,R).
+sum(0,T,T):-!.
+sum(X,P,R):-D is X mod 10,
+    0 is D mod 3,
+    P1 is (D+P),
+    X1 is X div 10,
+    sum(X1,P1,R);
+    X2 is X div 10,
+    sum(X2,P,R).
+    
+%19
+fib(1,1).
+fib(0,0).
+fib(X,Y):-
+    X>1,X1 is X-1,
+    X2 is X-2,
+    fib(X1,Y1),
+    fib(X2,Y2),
+    Y is Y1+Y2.
+    
+%20
+fib1(N,X):-fib1(0,1,1,N,X).
+ fib1(_,Res,N,N,Res):-!.
+fib1(X1,X2,I,N,Res):-
+    X is X1+X2,
+    I1 is I+1,
+    fib1(X1,X,I1,N,Res).
+    
